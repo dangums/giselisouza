@@ -1,0 +1,12 @@
+dra-sarah-johnson/
+├── assets/
+│   ├── images/               # Pasta para imagens
+│   ├── icons/                # Pasta para ícones (SVG, PNG, etc.)
+│   └── fonts/                # Pasta para fontes personalizadas (se necessário)
+├── css/
+│   └── styles.css            # Arquivo CSS principal
+├── js/
+│   ├── main.js               # Arquivo JavaScript principal
+│   └── config.js             # Arquivo de configuração (se necessário)
+├── index.html                # Arquivo HTML principal
+└── README.md                 # Documentação do projeto (opcional)
