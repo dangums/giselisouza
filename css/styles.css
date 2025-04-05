@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap');
 
 :root {
+  --mobile-padding: 1rem;
   --primary: #8B4513;
   --primary-light: rgba(139, 69, 19, 0.1);
   --secondary: #DAA520;
@@ -25,6 +26,15 @@ body {
   color: var(--dark);
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+/* Estilo base para o texto digitado */
+#typingText {
+  font-size: 5rem; /* Tamanho padrão para desktop */
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  min-height: 4.2rem; /* Altura mínima para evitar saltos de layout */
+  display: inline-block; /* Para melhor controle */
 }
 
 h1, h2, h3 {
@@ -88,8 +98,8 @@ a {
   font-size: 2rem;
   font-weight: 700;
   color: var(--primary);
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -487,7 +497,35 @@ a {
   margin-top: 3rem;
 }
 
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 101;
+}
+
 @media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .hero-container {
+    height: 100px;
+  }
+
+  .logo {
+    width: 45px;
+    height: 45px;
+    margin-left: 0.5rem;
+  }
+
+  #typingText {
+    font-size: 3.5rem; /* Tamanho padrão para desktop */
+  }
+
   h1 {
     font-size: 2.5rem;
   }
@@ -495,9 +533,31 @@ a {
   h2 {
     font-size: 2rem;
   }
+
+  .navbar .container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
   
   .nav-links {
-    gap: 1rem;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: var(--light);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 100;
+    padding: 2rem;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.active {
+    right: 0;
   }
   
   .about-content,
@@ -505,7 +565,75 @@ a {
     flex-direction: column;
   }
   
+  .about-panel {
+    margin-top: 0;
+  }
+  
+  .profile-image {
+    position: absolute;
+    top: -300;
+    left: 0;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .photo-container {
+    overflow: visible; /* Permite que o conteúdo transborde */
+    display: flex;
+      }
+
+  .about-text {
+    padding: 1.5rem;
+  }
+  
   .glass-panel {
-    padding: 2rem;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .btn {
+    padding: 0.8rem 1.5rem;
+    width: 100%;
+  }
+  
+  .social-card {
+    padding: 1.5rem;
+  }
+  
+  .contact-container {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--mobile-padding);
+  }
+  
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero-content h2 {
+    font-size: 1.3rem;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+  }
+  
+  .credentials {
+    flex-direction: column;
+  }
+  
+  .timeline-item {
+    padding-left: 30px;
+  }
+  
+  .timeline-dot {
+    left: 6px;
+    width: 15px;
+    height: 15px;
   }
 }

@@ -3,6 +3,21 @@ import { config } from './config.js';
 // Update colors from config
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.documentElement;
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  }
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
+
   root.style.setProperty('--primary', config.colors.primary);
   root.style.setProperty('--primary-light', `${config.colors.primary}18`);
   root.style.setProperty('--secondary', config.colors.secondary);
@@ -35,7 +50,15 @@ function initImageAnimation() {
   if (!aboutSection || !profileImage) {
     console.error("❌ A seção 'Sobre Mim' ou a imagem não foram encontradas!");
     return;
-  }
+
+    const isMobile = window.innerWidth <= 768;
+  
+    if (isMobile) {
+      // Em mobile, ativar a animação imediatamente
+      profileImage.classList.add("visible");
+      return;
+    }
+}
 
   function checkScroll() {
     const rect = aboutSection.getBoundingClientRect();
