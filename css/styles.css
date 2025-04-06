@@ -278,7 +278,7 @@ a {
   flex: 2;
   min-width: 300px;
   padding: 3rem;
-  background: var(--glass-dark);
+  /*background: var(--glass-dark);*/
 }
 
 .credentials {
@@ -642,5 +642,91 @@ a {
     left: 6px;
     width: 15px;
     height: 15px;
+  }
+}
+
+/* Ajustes para telas pequenas (360px) */
+@media (max-width: 360px) {
+  .glass-panel {
+    overflow: hidden; /* Impede que conteúdo vaze */
+    padding: 1.5rem 1rem; /* Padding mais equilibrado */
+  }
+
+    /* Ajustes específicos para o conteúdo interno */
+  .glass-panel > * {
+    max-width: 100%; /* Garante que não ultrapassem o container */
+    box-sizing: border-box; /* Inclui padding na largura total */
+  }
+
+  #typingText {
+    font-size: 3rem; /* Tamanho padrão para desktop */
+  }
+
+  /* Conteúdo do About */
+  .about-content {
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+
+  .photo-container {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto 1.5rem;
+  }
+
+  .profile-image {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .about-text {
+    padding: 1rem 0;
+    width: 100%;
+  }
+
+  /* Social Grid */
+  .social-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .social-card {
+    padding: 1.2rem;
+    margin: 0;
+  }
+
+  /* Timeline */
+  .timeline {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .timeline-content {
+    padding: 1rem;
+  }
+
+  /* Contato */
+  .contact-container {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0;
+  }
+
+  .contact-info, 
+  .contact-form {
+    width: 100%;
+    padding: 0;
+  }
+
+  /* Formulário */
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  input, textarea, select {
+    width: 100%;
   }
 }
