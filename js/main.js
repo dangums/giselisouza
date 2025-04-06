@@ -43,25 +43,49 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Função para animação da imagem ao rolar a página
-
 function initImageAnimation() {
-  const aboutSection = document.querySelector(".glass-panel.about-panel"); // Seção correta
-  const profileImage = document.querySelector(".profile-image"); // Imagem dentro da seção
+  const photoContainer = document.querySelector(".photo-container");
+  const profileImage = document.querySelector(".profile-image");
 
-  if (!aboutSection || !profileImage) {
-    console.error("❌ A seção 'Sobre Mim' ou a imagem não foram encontradas!");
+  if (!photoContainer || !profileImage) {
+    console.error("Elementos não encontrados");
     return;
+  }
 
-    const isMobile = window.innerWidth <= 768;
+  const isMobile = window.innerWidth <= 768;
   
-    if (isMobile) {
-      // Ativa imediatamente e ajusta para mobile
-      profileImage.classList.add("visible");
-      profileImage.style.opacity = "1";
-      profileImage.style.transform = "none";
-      return;
-    }
+  if (isMobile) {
+    // Observador de interseção para mobile
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          profileImage.classList.add("visible");
+          observer.unobserve(entry.target); // Para de observar após a animação
+        }
+      });
+    }, {
+      threshold: 0.8 // Dispara quando 80% do container estiver visível
+    });
+
+    observer.observe(photoContainer);
+  } else {
+    // Animação original para desktop
+    const aboutSection = document.querySelector(".glass-panel.about-panel");
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          profileImage.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+  if (aboutSection) observer.observe(aboutSection);
 }
+
 
   function checkScroll() {
     const rect = aboutSection.getBoundingClientRect();
