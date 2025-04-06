@@ -502,14 +502,17 @@ a {
   background: none;
   border: none;
   color: var(--primary);
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   cursor: pointer;
   z-index: 101;
+  padding: 0.5rem;
+  margin-right: 1rem;
 }
 
 @media (max-width: 768px) {
   .menu-toggle {
-    display: block;
+    display: block; /* Mostrar apenas em mobile */
+    order: 2; /* Posicionar à direita */
   }
 
   .hero-container {
@@ -570,18 +573,22 @@ a {
   }
   
   .profile-image {
-    position: absolute;
-    top: -300;
+    width: 100%; /* Aumenta a largura da foto */
+    max-width: 1000px; /* Define um tamanho máximo maior para mobile */
+    position: relative;
+    top: 20;
     left: 0;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
+    margin: 0 auto; /* Centraliza a imagem */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
   }
   
   .photo-container {
-    overflow: visible; /* Permite que o conteúdo transborde */
+    width: 100%;
+    padding: 0;
+    margin-bottom: 2rem;
     display: flex;
-      }
+    justify-content: center;
+  }
 
   .about-text {
     padding: 1.5rem;

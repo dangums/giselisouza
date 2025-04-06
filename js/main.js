@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
+      menuToggle.classList.toggle('active');
     });
   }
 
@@ -54,8 +55,10 @@ function initImageAnimation() {
     const isMobile = window.innerWidth <= 768;
   
     if (isMobile) {
-      // Em mobile, ativar a animação imediatamente
+      // Ativa imediatamente e ajusta para mobile
       profileImage.classList.add("visible");
+      profileImage.style.opacity = "1";
+      profileImage.style.transform = "none";
       return;
     }
 }
